@@ -3,12 +3,12 @@ name: Trigger auto deployment for contosoair
 # When this action will be executed
 on:
   # Automatically trigger it when detected changes in repo
-  push:
-    branches: 
-      [ main ]
-    paths:
-    - '**'
-    - '.github/workflows/contosoair-AutoDeployTrigger-f0256a98-477a-4cfe-9614-d1203a347501.yml'
+  #push:
+  #  branches: 
+  #    [ main ]
+  #  paths:
+  #  - '**'
+  #  - '.github/workflows/contosoair-AutoDeployTrigger-f0256a98-477a-4cfe-9614-d1203a347501.yml'
 
   # Allow mannually trigger 
   workflow_dispatch:      
