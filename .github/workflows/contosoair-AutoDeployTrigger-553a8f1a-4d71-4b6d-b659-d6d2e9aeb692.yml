@@ -8,7 +8,7 @@ on:
       [ main ]
     paths:
     - '**'
-    - '.github/workflows/contosoair-AutoDeployTrigger-553a8f1a-4d71-4b6d-b659-d6d2e9aeb692.yml'
+    - '.github/workflows/contosoair-AutoDeployTrigger-9cc0e429-6034-4889-a862-64d0206c6188.yml'
 
   # Allow mannually trigger 
   workflow_dispatch:      
