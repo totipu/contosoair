@@ -1,0 +1,42 @@
+name: Trigger auto deployment for contosoair
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/contosoair-AutoDeployTrigger-4dd9ed32-c390-45cd-9f7c-d487078bc846.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.CONTOSOAIR_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: ca9cf1bcd310acr.azurecr.io
+          registryUsername: ${{ secrets.CONTOSOAIR_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.CONTOSOAIR_REGISTRY_PASSWORD }}
+          containerAppName: contosoair
+          resourceGroup: totipu_rg_0104
+          imageToBuild: ca9cf1bcd310acr.azurecr.io/contosoair:${{ github.sha }}
+          
+
+     
+
